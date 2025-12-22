@@ -185,3 +185,7 @@ ul {
 .contact-form button:hover {
   opacity: 0.9;
 }
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
