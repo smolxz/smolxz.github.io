@@ -189,3 +189,70 @@ ul {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* ADD THIS TO THE BOTTOM OF style.css */
+.btn-small {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-small:hover {
+  background: #38bdf8;
+  color: #020617;
+}
+
+/* ADD THIS TO style.css */
+
+/* Hide the hamburger button by default (Desktop) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex; /* Show button on mobile */
+  }
+
+  .nav-links {
+    display: none; /* Hide links by default */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px; /* Below the navbar */
+    left: 0;
+    background-color: #020617;
+    padding: 20px;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show when active class is added */
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+    font-size: 1.2rem;
+  }
+}
+
