@@ -1,10 +1,12 @@
-/* REPLACE THE TOP OF style.css WITH THIS */
+/* ================= VARIABLES ================= */
 :root {
   --bg-color: #0f172a;
   --nav-bg: #020617;
   --text-color: #e5e7eb;
-  --card-bg: #0f172a;
+  --card-bg: #1e293b; /* Slightly lighter than bg for contrast */
   --border-color: #1e293b;
+  --input-bg: #020617;
+  --placeholder-color: #94a3b8;
 }
 
 /* Light Mode Variables */
@@ -14,6 +16,16 @@
   --text-color: #0f172a;
   --card-bg: #ffffff;
   --border-color: #e2e8f0;
+  --input-bg: #f1f5f9;
+  --placeholder-color: #64748b;
+}
+
+/* ================= RESET & BODY ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
 }
 
 body {
@@ -23,19 +35,17 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
+/* ================= NAVBAR ================= */
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensures items align vertically */
+  padding: 20px 40px;
   background: var(--nav-bg);
   border-bottom: 1px solid var(--border-color);
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-}
-
-/* Update nav links for light mode visibility */
-.light-mode nav a {
-  color: #0f172a;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Keeps navbar on top */
 }
 
 .logo {
@@ -43,17 +53,18 @@ body {
   font-weight: bold;
 }
 
-nav a {
+.nav-links a {
   margin-left: 20px;
   text-decoration: none;
-  color: #e5e7eb;
+  color: var(--text-color); /* Uses variable for light mode support */
+  font-weight: 500;
 }
 
-nav a:hover {
+.nav-links a:hover {
   color: #38bdf8;
 }
 
-/* HERO */
+/* ================= HERO & SECTIONS ================= */
 .hero {
   padding: 100px 40px;
   text-align: center;
@@ -61,13 +72,28 @@ nav a:hover {
 
 .hero h1 {
   font-size: 3rem;
+  animation: fadeUp 1s ease-in-out;
 }
 
 .hero p {
   margin: 20px 0;
-  color: #cbd5f5;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
+.section {
+  padding: 80px 40px;
+  max-width: 1000px;
+  margin: auto;
+  scroll-margin-top: 80px;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* ================= BUTTONS ================= */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -78,23 +104,25 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* SECTIONS */
-.section {
-  padding: 80px 40px;
-  max-width: 1000px;
-  margin: auto;
+.btn-small {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: 0.3s;
 }
 
-.section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.btn-small:hover {
+  background: #38bdf8;
+  color: #020617;
 }
 
-.dark {
-  background: #020617;
-}
-
-/* CARDS */
+/* ================= CARDS ================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -102,66 +130,26 @@ nav a:hover {
 }
 
 .card {
-  background: #0f172a;
+  background: var(--card-bg); /* FIXED: Uses variable now */
   padding: 20px;
   border-radius: 12px;
-  border: 1px solid #1e293b;
-}
-
-/* CTA */
-.cta {
-  padding: 80px 40px;
-  text-align: center;
-  background: linear-gradient(135deg, #38bdf8, #22c55e);
-  color: #020617;
-}
-
-.cta h2 {
-  font-size: 2.2rem;
-}
-
-/* FOOTER */
-footer {
-  padding: 30px;
-  text-align: center;
-  background: #020617;
-  color: #94a3b8;
-}
-.hero h1 {
-  animation: fadeUp 1s ease-in-out;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-section {
-  scroll-margin-top: 80px;
-}
-
-ul {
-  color: #cbd5f5;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  transition: 0.3s ease;
   border-color: #38bdf8;
 }
-/* CONTACT FORM - PROFESSIONAL */
+
+/* ================= CONTACT FORM ================= */
 .contact-form {
   max-width: 520px;
   margin: 40px auto 0;
-  background: #020617;
+  background: var(--card-bg); /* FIXED: Matches card style */
   padding: 30px;
   border-radius: 16px;
-  border: 1px solid #1e293b;
+  border: 1px solid var(--border-color);
 }
 
 .contact-form input,
@@ -170,15 +158,15 @@ ul {
   padding: 14px 16px;
   margin-bottom: 18px;
   border-radius: 10px;
-  border: 1px solid #1e293b;
-  background: #020617;
-  color: #e5e7eb;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg); /* FIXED: Uses variable */
+  color: var(--text-color);
   font-size: 1rem;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: #94a3b8;
+  color: var(--placeholder-color);
 }
 
 .contact-form input:focus,
@@ -207,27 +195,29 @@ ul {
   cursor: not-allowed;
 }
 
-/* ADD THIS TO THE BOTTOM OF style.css */
-.btn-small {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  background: transparent;
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  transition: 0.3s;
+/* ================= FOOTER ================= */
+footer {
+  padding: 30px;
+  text-align: center;
+  background: var(--nav-bg); /* FIXED: Uses variable */
+  color: var(--placeholder-color);
+  border-top: 1px solid var(--border-color);
+  margin-top: 50px;
 }
 
-.btn-small:hover {
-  background: #38bdf8;
-  color: #020617;
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ADD THIS TO style.css */
-
+/* ================= MOBILE NAV (Hamburger) ================= */
 /* Hide the hamburger button by default (Desktop) */
 .menu-toggle {
   display: none;
@@ -241,7 +231,7 @@ ul {
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  background-color: #e5e7eb;
+  background-color: var(--text-color); /* Matches theme color */
   border-radius: 2px;
 }
 
@@ -256,11 +246,13 @@ ul {
     flex-direction: column;
     width: 100%;
     position: absolute;
-    top: 60px; /* Below the navbar */
+    top: 70px; /* Adjusted to match typical navbar height */
     left: 0;
-    background-color: #020617;
+    background-color: var(--nav-bg); /* FIXED: Uses variable */
     padding: 20px;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Adds shadow for visibility */
+    z-index: 999;
   }
 
   .nav-links.active {
@@ -270,5 +262,6 @@ ul {
   .nav-links a {
     margin: 10px 0;
     font-size: 1.2rem;
+    text-align: center;
   }
 }
