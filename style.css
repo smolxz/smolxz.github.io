@@ -297,3 +297,25 @@ footer {
   transform: scale(0.90); /* Shrink Effect */
 }
 
+/* ================= TYPING CURSOR EFFECT ================= */
+.cursor {
+  display: inline-block;
+  background-color: transparent;
+  width: 3px;
+  animation: blink 1s infinite;
+  margin-left: 5px;
+  color: #e5e7eb; /* Matches your text color */
+}
+
+.cursor.typing {
+  animation: none; /* Stops blinking while typing */
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  49% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
