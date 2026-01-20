@@ -318,4 +318,21 @@ footer {
   100% { opacity: 0; }
 }
 
+/* ================= SCROLL ANIMATION ================= */
+.hidden {
+  opacity: 0;
+  transform: translateY(50px); /* Start 50px lower */
+  transition: all 1s ease-out; /* Takes 1 second to float up */
+  filter: blur(5px); /* Starts slightly blurry */
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0); /* Moves to original position */
+  filter: blur(0); /* Becomes clear */
+}
+
+/* Optional: Stagger animations for cards so they don't appear all at once */
+.card:nth-child(2) { transition-delay: 200ms; }
+.card:nth-child(3) { transition-delay: 400ms; }
 
