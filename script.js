@@ -72,60 +72,63 @@ if (themeToggle) {
   });
 }
 
-// ================= TYPING TEXT EFFECT =================
+// ... (keep your top code for Contact, Menu, Theme) ...
+
+// ================= TYPING TEXT EFFECT (FIXED) =================
 const typeSpan = document.querySelector(".auto-type");
 const cursorSpan = document.querySelector(".cursor");
 
 const words = ["Modern Websites", "Digital Platforms", "The Future"];
 const typingDelay = 100;
 const erasingDelay = 50;
-const newTextDelay = 2000; // Delay between current and next text
+const newTextDelay = 2000;
 let textArrayIndex = 0;
 let charIndex = 0;
 
 function type() {
   if (charIndex < words[textArrayIndex].length) {
-    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-    typeSpan.textContent += words[textArrayIndex].charAt(charIndex);
+    if(cursorSpan && !cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    if(typeSpan) typeSpan.textContent += words[textArrayIndex].charAt(charIndex);
     charIndex++;
     setTimeout(type, typingDelay);
   } else {
-    cursorSpan.classList.remove("typing");
+    if(cursorSpan) cursorSpan.classList.remove("typing");
     setTimeout(erase, newTextDelay);
   }
 }
 
 function erase() {
   if (charIndex > 0) {
-    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-    typeSpan.textContent = words[textArrayIndex].substring(0, charIndex - 1);
+    if(cursorSpan && !cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    if(typeSpan) typeSpan.textContent = words[textArrayIndex].substring(0, charIndex - 1);
     charIndex--;
     setTimeout(erase, erasingDelay);
   } else {
-    cursorSpan.classList.remove("typing");
+    if(cursorSpan) cursorSpan.classList.remove("typing");
     textArrayIndex++;
     if(textArrayIndex >= words.length) textArrayIndex = 0;
     setTimeout(type, typingDelay + 1100);
   }
 }
 
-// Start the animation only if the element exists (prevents errors on other pages)
+// FIX: Run immediately if page is loaded, otherwise wait
 if (typeSpan) { 
-  document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
-    if(words.length) setTimeout(type, newTextDelay + 250);
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(type, newTextDelay + 250));
+  } else {
+    setTimeout(type, newTextDelay + 250);
+  }
 }
 
 // ================= SCROLL ANIMATION LOGIC =================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    // If the element is visible on the screen
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
     }
   });
 });
 
-// Tell the observer to watch all elements with the "hidden" class
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
