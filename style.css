@@ -294,5 +294,14 @@ footer {
   transform: scale(0.95); /* A tiny click animation */
 }
 
-
+#theme-toggle {
+  margin-left: 10px; /* Adds the space back */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-color); /* Ensures it matches the theme */
+  
+  /* ... plus the code from Step 1 ... */
+}
 
