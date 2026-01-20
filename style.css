@@ -321,17 +321,19 @@ footer {
 /* ================= SCROLL ANIMATION ================= */
 .hidden {
   opacity: 0;
-  transform: translateY(50px); /* Start 50px lower */
-  transition: all 1s ease-out; /* Takes 1 second to float up */
-  filter: blur(5px); /* Starts slightly blurry */
+  transform: translateY(50px);
+  filter: blur(5px);
+  /* FIX: Add !important to ensure this transition overrides the .card transition */
+  transition: all 1s ease-out !important; 
 }
 
 .show {
   opacity: 1;
-  transform: translateY(0); /* Moves to original position */
-  filter: blur(0); /* Becomes clear */
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-/* Optional: Stagger animations for cards so they don't appear all at once */
+/* Stagger animations */
 .card:nth-child(2) { transition-delay: 200ms; }
 .card:nth-child(3) { transition-delay: 400ms; }
+
