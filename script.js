@@ -71,3 +71,48 @@ if (themeToggle) {
     }
   });
 }
+
+// ================= TYPING TEXT EFFECT =================
+const typeSpan = document.querySelector(".auto-type");
+const cursorSpan = document.querySelector(".cursor");
+
+const words = ["Modern Websites", "Digital Platforms", "The Future"];
+const typingDelay = 100;
+const erasingDelay = 50;
+const newTextDelay = 2000; // Delay between current and next text
+let textArrayIndex = 0;
+let charIndex = 0;
+
+function type() {
+  if (charIndex < words[textArrayIndex].length) {
+    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    typeSpan.textContent += words[textArrayIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, typingDelay);
+  } else {
+    cursorSpan.classList.remove("typing");
+    setTimeout(erase, newTextDelay);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    typeSpan.textContent = words[textArrayIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(erase, erasingDelay);
+  } else {
+    cursorSpan.classList.remove("typing");
+    textArrayIndex++;
+    if(textArrayIndex >= words.length) textArrayIndex = 0;
+    setTimeout(type, typingDelay + 1100);
+  }
+}
+
+// Start the animation only if the element exists (prevents errors on other pages)
+if (typeSpan) { 
+  document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+    if(words.length) setTimeout(type, newTextDelay + 250);
+  });
+}
+
