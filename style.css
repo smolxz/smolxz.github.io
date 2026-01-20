@@ -265,3 +265,34 @@ footer {
     text-align: center;
   }
 }
+
+/* ADD THIS TO THE BOTTOM OF style.css */
+
+#theme-toggle {
+  /* 1. Make the button a perfect circle */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  
+  /* 2. Center the icon inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 3. Remove the default ugly square box */
+  -webkit-tap-highlight-color: transparent;
+  
+  /* 4. Smooth color transition */
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* 5. DEFINE THE CLICK EFFECT HERE */
+#theme-toggle:active {
+  /* This runs ONLY when you hold your finger on it */
+  background-color: rgba(56, 189, 248, 0.2); /* A faint blue circle */
+  color: #38bdf8; /* The icon turns bright blue */
+  transform: scale(0.95); /* A tiny click animation */
+}
+
+
+
