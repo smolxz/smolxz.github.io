@@ -337,3 +337,52 @@ footer {
 .card:nth-child(2) { transition-delay: 200ms; }
 .card:nth-child(3) { transition-delay: 400ms; }
 
+/* ================= NEWSLETTER / WAITLIST ================= */
+.newsletter-box {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  max-width: 700px;
+  margin: 0 auto; /* Centers the box */
+  
+  /* Adds a subtle glow effect */
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.05);
+}
+
+/* The Input and Button row */
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Wraps on mobile phones */
+}
+
+.newsletter-form input {
+  flex: 1; /* Takes up all available space */
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-color);
+  min-width: 200px;
+}
+
+.newsletter-form button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.newsletter-form button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
