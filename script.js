@@ -129,4 +129,3 @@ const observer = new IntersectionObserver((entries) => {
 // Tell the observer to watch all elements with the "hidden" class
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
-
