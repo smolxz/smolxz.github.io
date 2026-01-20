@@ -116,3 +116,17 @@ if (typeSpan) {
   });
 }
 
+// ================= SCROLL ANIMATION LOGIC =================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    // If the element is visible on the screen
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+// Tell the observer to watch all elements with the "hidden" class
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
+
