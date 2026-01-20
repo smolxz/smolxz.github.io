@@ -1,24 +1,41 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+/* REPLACE THE TOP OF style.css WITH THIS */
+:root {
+  --bg-color: #0f172a;
+  --nav-bg: #020617;
+  --text-color: #e5e7eb;
+  --card-bg: #0f172a;
+  --border-color: #1e293b;
+}
+
+/* Light Mode Variables */
+.light-mode {
+  --bg-color: #f8fafc;
+  --nav-bg: #ffffff;
+  --text-color: #0f172a;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
 }
 
 body {
-  background: #0f172a;
-  color: #e5e7eb;
+  background: var(--bg-color);
+  color: var(--text-color);
   line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* NAVBAR */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  background: #020617;
-  position: sticky;
-  top: 0;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+/* Update nav links for light mode visibility */
+.light-mode nav a {
+  color: #0f172a;
 }
 
 .logo {
