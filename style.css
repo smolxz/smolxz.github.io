@@ -266,9 +266,16 @@ footer {
   }
 }
 
-/* ADD THIS TO THE BOTTOM OF style.css */
-
+/* ================= THEME TOGGLE BUTTON ================= */
 #theme-toggle {
+  /* Positioning & Basic Style */
+  margin-left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  
   /* 1. Make the button a perfect circle */
   width: 40px;
   height: 40px;
@@ -283,7 +290,7 @@ footer {
   -webkit-tap-highlight-color: transparent;
   
   /* 4. Smooth color transition */
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
 }
 
 /* 5. DEFINE THE CLICK EFFECT HERE */
@@ -291,17 +298,6 @@ footer {
   /* This runs ONLY when you hold your finger on it */
   background-color: rgba(56, 189, 248, 0.2); /* A faint blue circle */
   color: #38bdf8; /* The icon turns bright blue */
-  transform: scale(0.95); /* A tiny click animation */
-}
-
-#theme-toggle {
-  margin-left: 10px; /* Adds the space back */
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: var(--text-color); /* Ensures it matches the theme */
-  
-  /* ... plus the code from Step 1 ... */
+  transform: scale(0.90); /* A nice click press animation */
 }
 
