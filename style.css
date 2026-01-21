@@ -355,24 +355,27 @@ footer {
 /* The Input and Button row */
 .newsletter-form {
   display: flex;
+  justify-content: center; /* FIX 1: Centers the form items horizontally */
+  align-items: stretch; /* FIX 2: Forces both to be the exact same height */
   gap: 10px;
   margin-top: 20px;
-  flex-wrap: wrap; /* Wraps on mobile phones */
+  flex-wrap: wrap;
 }
 
 .newsletter-form input {
-  flex: 1; /* Takes up all available space */
+  flex: 1;
   padding: 14px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
   background: var(--input-bg);
   color: var(--text-color);
   min-width: 200px;
+  max-width: 400px; /* Optional: Stops it from getting too wide on big screens */
 }
 
 .newsletter-form button {
   padding: 14px 28px;
-  border: none;
+  border: 1px solid transparent; /* FIX 3: Adds invisible border so height matches input */
   border-radius: 8px;
   background: linear-gradient(135deg, #38bdf8, #2563eb);
   color: white;
