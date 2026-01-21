@@ -386,3 +386,41 @@ footer {
   opacity: 0.9;
 }
 
+/* ================= INFINITE MARQUEE ================= */
+.marquee-container {
+  width: 100%;
+  background: var(--card-bg); /* Matches your theme */
+  padding: 15px 0;
+  overflow: hidden; /* Hides the text when it goes off screen */
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap; /* Forces text to stay in one long line */
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: scroll 20s linear infinite; /* The magic moving engine */
+}
+
+.marquee-content span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--placeholder-color); /* Subtle grey color */
+  margin: 0 20px; /* Space between words */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* The Animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Moves the strip exactly 50% to the left to create the loop */
+    transform: translateX(-50%);
+  }
+}
+
